@@ -21,7 +21,7 @@ const Customer = () => {
   const [responseMsg, setResponseMsg] = useState("");
   const [isSlotAvailable, setIsSlotAvailable] = useState(true);
   const [showSubmit, setShowSubmit] = useState(false);
-
+  const net = 0;
   const handlePhoneNoChange = (e) => {
     const val = e.target.value;
     setPhoneNo(val);
