@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "./a_logo.png";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;
 
 const Header = () => {
   const { user } = useSelector((state) => state.users);

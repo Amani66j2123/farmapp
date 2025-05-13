@@ -24,7 +24,10 @@ const corsOptions = {
   }; 
   app.use(cors(corsOptions)); 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000", "https://farmapp-vu4t.onrender.com"],
+  credentials: true
+}));
 
 // Serve static files from the "uploads" directory
 const __filename = fileURLToPath(import.meta.url);
