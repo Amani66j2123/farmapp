@@ -17,7 +17,12 @@ import moment from "moment"; // Import moment
 import * as ENV from "./config.js";
 
 const app = express();
-
+const corsOptions = { 
+  origin: ENV.CLIENT_URL, //client URL local 
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
+  credentials: true, // Enable credentials (cookies, authorization headers, etc.) 
+  }; 
+  app.use(cors(corsOptions)); 
 app.use(express.json());
 app.use(cors());
 
@@ -31,19 +36,14 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
  const con =
  `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=farmCluster`;
 mongoose
-  .connect(con, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  //.connect(con, {
+   // useNewUrlParser: true,
+    //useUnifiedTopology: true,
+  //})
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
   //Middleware 
-const corsOptions = { 
-  origin: ENV.CLIENT_URL, //client URL local 
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
-  credentials: true, // Enable credentials (cookies, authorization headers, etc.) 
-  }; 
-  app.use(cors(corsOptions)); 
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
