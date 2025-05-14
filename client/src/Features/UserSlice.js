@@ -14,26 +14,6 @@ const initialState = {
 // Register User
 export const registerUser = createAsyncThunk(
   "users/registerUser",
-  async (userData) => {
-    try {
-      //sends a POST request to the server along the request body object
-      const response = await axios.post(`${ENV.SERVER_URL}/registerUser`, {
-        name: userData.name,
-        email: userData.email,
-        password: userData.password,
-      });
-      console.log(response);
-      const user = response.data.user; //retrieve the response from the server
-      return user; //return the response from the server as payload to the thunk
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
-{/*
-export const registerUser = createAsyncThunk(
-  "users/registerUser",
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${ENV.SERVER_URL}/registerUser`, {
@@ -53,27 +33,9 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
-*/}
-// Login User
-//Create the thunk for login
-export const login = createAsyncThunk("users/login", async (userData) => {
-  try {
-    const response = await axios.post(`${ENV.SERVER_URL}/login`, {
-      email: userData.email,
-      password: userData.password,
-    });
 
-    const user = response.data.user;
-    console.log(response);
-    return user;
-  } catch (error) {
-    //handle the error
-    const errorMessage = "Invalid credentials";
-    alert(errorMessage);
-    throw new Error(errorMessage);
-  }
-});
-{/*export const login = createAsyncThunk(
+// Login User
+export const login = createAsyncThunk(
   "users/login",
   async (userData, { rejectWithValue }) => {
     try {
@@ -93,7 +55,7 @@ export const login = createAsyncThunk("users/login", async (userData) => {
     }
   }
 );
-*/}
+
 // Logout User
 export const logout = createAsyncThunk(
   "users/logout",
