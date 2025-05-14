@@ -70,7 +70,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link fs-5" to="login" onClick={collapseNavbar}>
+                    <Link className="nav-link fs-5" to="/login" onClick={collapseNavbar}>
                       Login
                     </Link>
                   </li>
