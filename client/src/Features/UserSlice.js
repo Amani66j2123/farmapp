@@ -35,7 +35,25 @@ export const registerUser = createAsyncThunk(
 );
 
 // Login User
-export const login = createAsyncThunk(
+//Create the thunk for login
+export const login = createAsyncThunk("users/login", async (userData) => {
+  try {
+    const response = await axios.post(`${ENV.SERVER_URL}/login`, {
+      email: userData.email,
+      password: userData.password,
+    });
+
+    const user = response.data.user;
+    console.log(response);
+    return user;
+  } catch (error) {
+    //handle the error
+    const errorMessage = "Invalid credentials";
+    alert(errorMessage);
+    throw new Error(errorMessage);
+  }
+});
+{/*export const login = createAsyncThunk(
   "users/login",
   async (userData, { rejectWithValue }) => {
     try {
@@ -55,7 +73,7 @@ export const login = createAsyncThunk(
     }
   }
 );
-
+*/}
 // Logout User
 export const logout = createAsyncThunk(
   "users/logout",
