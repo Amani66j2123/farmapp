@@ -17,7 +17,7 @@ import moment from "moment"; // Import moment
 import * as ENV from "./config.js";
 
 const app = express();
-const corsOptions = { 
+{/*const corsOptions = { 
   origin: ENV.CLIENT_URL, //client URL local 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
   credentials: true, // Enable credentials (cookies, authorization headers, etc.) 
@@ -25,9 +25,17 @@ const corsOptions = {
   app.use(cors(corsOptions)); 
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:3000", "https://farmapp-vu4t.onrender.com"],
-  credentials: true
-}));
+ 
+})); 
+*/}
+const corsOptions = {
+origin: ENV.CLIENT_URL,
+methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+credentials: true,
+};
+app.use(cors(corsOptions));
+
+app.use(express.json());
 
 // Serve static files from the "uploads" directory
 const __filename = fileURLToPath(import.meta.url);

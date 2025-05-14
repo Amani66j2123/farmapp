@@ -35,11 +35,27 @@ export const registerUser = createAsyncThunk(
 );
 
 // Login User
-export const login = createAsyncThunk(
-  "users/login",
-  async (userData, { rejectWithValue }) => {
+//export const login = createAsyncThunk(
+  //"users/login",
+  export const login = createAsyncThunk("users/login", async (userData) => {
     try {
-      const response = await axios.post(`${ENV.SERVER_URL}users/login`, {
+      const response = await axios.post(`${ENV.SERVER_URL}/login`, {
+        email: userData.email,
+        password: userData.password,
+      });
+      const user = response.data.user;
+    console.log(response);
+    return user;
+  } catch (error) {
+    //handle the error
+    const errorMessage = "Invalid credentials";
+    alert(errorMessage);
+    throw new Error(errorMessage);
+  }
+});
+  {/*async (userData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`${ENV.SERVER_URL}/users/login`, {
         email: userData.email,
         password: userData.password,
       });
@@ -54,7 +70,7 @@ export const login = createAsyncThunk(
       );
     }
   }
-);
+);*/}
 
 // Logout User
 export const logout = createAsyncThunk(
