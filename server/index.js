@@ -28,10 +28,7 @@ app.use(cors({
  
 })); 
 */}
-const cors = require('cors');
-app.use(cors({
-  origin: 'https://farmapp-vu4t.onrender.com'
-}));
+
 const corsOptions = {
 origin: [ENV.CLIENT_URL,'https://farmapp-vu4t.onrender.com'],
 methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
