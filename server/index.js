@@ -28,6 +28,7 @@ app.use(cors({
  
 })); 
 */}
+
 const corsOptions = {
 origin: ENV.CLIENT_URL,
 methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
