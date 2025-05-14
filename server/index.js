@@ -45,7 +45,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 //const con =
  // "mongodb+srv://admin:csse3101@farmcluster.ggyy1gr.mongodb.net/farmDb?retryWrites=true&w=majority&appName=farmCluster";
  const con =
- `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=farmCluster`;
+ `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority`;
 mongoose
   //.connect(con, {
    // useNewUrlParser: true,
